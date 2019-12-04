@@ -1,0 +1,18 @@
+<h2>Add a New Vehicle</h2>
+
+<form method="POST" action="/vehicles">
+    <label>Select User:</label>
+    <select name="user_id">
+        <% @users.each do |user| %>
+            <option value="<%= user.id %>"><%= user.username %></option>
+        <% end %>
+    </select>
+    <br>
+    <label>Make:</label>
+    <input type="text" name="make">
+    <br>
+    <label>Model:</label>
+    <input type="text" name="model">
+    <br>
+    <input type="submit">
+</form>

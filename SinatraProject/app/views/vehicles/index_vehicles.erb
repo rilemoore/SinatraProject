@@ -1,0 +1,5 @@
+<h2>The Vehicles:</h2>
+
+<% @vehicles.each do |vehicle| %>
+    <p><a href="/vehicles/<%= vehicle.id %>"><%= vehicle.model %></a></p>
+<% end %>

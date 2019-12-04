@@ -1,0 +1,14 @@
+  
+<h2>Edit a Vehicle</h2>
+
+<form method="POST" action="/vehicles/<%= @vehicle.id %>">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
+    <br>
+    <label>Make:</label>
+    <input type="text" name="make" value="<%= @vehicle.make %>">
+    <br>
+    <label>Model:</label>
+    <inpute type="text" name="model" value ="<%= @vehicle.model %>"
+    <br>
+    <input type="submit">
+</form>

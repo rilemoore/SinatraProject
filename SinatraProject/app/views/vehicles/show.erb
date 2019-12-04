@@ -1,0 +1,7 @@
+<h2><%= @vehicle.make %></h2>
+<p><%= @vehicle.model %></p>
+
+<form method="POST" action="/vehicles/<%= @vehicle.id %>">
+    <input type="hidden" id="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+</form>
