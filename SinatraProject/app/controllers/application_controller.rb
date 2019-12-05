@@ -65,6 +65,13 @@ get '/vehicles' do
 end
 
 get '/vehicles/new' do
+    if(session[:user_id])
+      @current_user = User.find(session[:user_id])
+    else
+      redirect '/failure'
+    end
+
+    
     @users = User.all
     erb :'vehicles/new'
 end

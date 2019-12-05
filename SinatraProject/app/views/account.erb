@@ -1,7 +1,10 @@
 
-<h1>Welcome <%= User.find(session[:user_id]).username %> </h1>
+<h1>Welcome to your online garage, <%= @user.username %> </h1>
 
-<p>We are currently working on your account.</p>
+<p>Here are some options for you</p>
 
 <p><a href="/logout">Log Out</a></p>
 <p><a href="/vehicles/new">Upload Vehicle</a></p>
+<% @user.vehicles.each do |vehicle| %>
+    <p><a href="/vehicles/<%= vehicle.id %>"><%= vehicle.model %></a></p>
+<% end %>

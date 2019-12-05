@@ -6,6 +6,7 @@ class VehiclesController < ApplicationController
     end
 
     get '/vehicles/new' do
+        @current_user = User.find(session[:user_id])
         @users = User.all
         erb :'vehicles/new'
     end
