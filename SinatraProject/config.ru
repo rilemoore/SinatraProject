@@ -1,3 +1,4 @@
-require './app/controllers/application_controller'
-
+require './config/environment'
+# rack method override
+use VehiclesController
 run ApplicationController
