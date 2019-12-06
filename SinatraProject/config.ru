@@ -1,4 +1,4 @@
 require './config/environment'
-# rack method override
+use Rack::MethodOverride
 use VehiclesController
 run ApplicationController

@@ -1,6 +1,7 @@
   
-<h2>Edit a Vehicle</h2>
 
+<% if @vehicle.user.id == User.find(session[:user_id]).id %>
+<h2>Edit a Vehicle</h2>
 <form method="POST" action="/vehicles/<%= @vehicle.id %>">
     <input type="hidden" id="hidden" name="_method" value="PATCH">
     <br>
@@ -8,7 +9,11 @@
     <input type="text" name="make" value="<%= @vehicle.make %>">
     <br>
     <label>Model:</label>
-    <inpute type="text" name="model" value ="<%= @vehicle.model %>"
+    <input type="text" name="model" value ="<%= @vehicle.model %>"
     <br>
-    <input type="submit">
+    <br>
+    <input type="submit" value ="Submit">
 </form>
+<% else %>
+<h2>You do not have access to this page</h2>
+<% end %>

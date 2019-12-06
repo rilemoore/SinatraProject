@@ -1,11 +1,8 @@
 <h2>Add a New Vehicle</h2>
 
 <form method="POST" action="/vehicles">
-    <label>Select User:</label>
-    <select name="user_id">
-        <% @users.each do |user| %>
-            <option value="<%= user.id %>"><%= user.username %></option>
-        <% end %>
+    <select name="user_id">      
+        <option value="<%= @current_user.id %>"><%= @current_user.username %></option>
     </select>
     <br>
     <label>Make:</label>

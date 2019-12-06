@@ -21,30 +21,38 @@ class VehiclesController < ApplicationController
         user = User.find_by(id: params[:user_id])
         vehicle = user.vehicles.build(params)
         if vehicle.save
-            redirect "/vehicles"
+            redirect "/account"
         else
             redirect "vehicles/new"
         end
       end
     
       get '/vehicles/:id' do
-        @vehicle = Vehicle.find_by(id: params[:id])
-        if @vehicle
+        if(!session[:user_id])
+          redirect '/failure'
+        else 
+          @vehicle = Vehicle.find_by(id: params[:id])
+          if @vehicle
             erb :'vehicles/show'
-        else
+          else
             redirect '/vehicles'
+          end
         end
+
       end
     
       get "/vehicles/:id/edit" do
-        @users = User.all
         @vehicle = Vehicle.find_by(id: params[:id])
-        erb :'vehicles/edit'
+        if(!!session[:user_id])
+          erb :'vehicles/edit'
+        else
+          redirect '/failure'
+        end
       end
     
       patch "/vehicles/:id" do
         @vehicle = Vehicle.find_by(id: params[:id])
-        if @vehicle.update(title: params[:title], body: params[:body])
+        if @vehicle.update(make: params[:make], model: params[:model])
             redirect "/vehicles/#{@vehicle.id}"
         else
             redirect "/vehicles/#{@vehicle.id}/edit"
@@ -54,6 +62,6 @@ class VehiclesController < ApplicationController
       delete "/vehicles/:id" do
         @vehicle = Vehicle.find_by(id: params[:id])
         @vehicle.delete
-        redirect "/vehicles"
+        redirect "/account"
       end
 end
