@@ -52,7 +52,7 @@ class VehiclesController < ApplicationController
     
       patch "/vehicles/:id" do
         @vehicle = Vehicle.find_by(id: params[:id])
-        if @vehicle.update(make: params[:make], model: params[:model])
+        if @vehicle.update(make: params[:make], model: params[:model], money_invested: params[:money_invested])
             redirect "/vehicles/#{@vehicle.id}"
         else
             redirect "/vehicles/#{@vehicle.id}/edit"
