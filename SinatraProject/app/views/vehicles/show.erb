@@ -1,5 +1,6 @@
 <h2><%= @vehicle.make %></h2>
 <p><%= @vehicle.model %></p>
+<p>$<%= @vehicle.money_invested %> invested</p>
 <% if @vehicle.user.id == User.find(session[:user_id]).id %>
 <form method="POST" action="/vehicles/<%= @vehicle.id %>">
     <input type="hidden" id="hidden" name="_method" value="DELETE">
